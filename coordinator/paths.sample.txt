@@ -1,0 +1,2 @@
+# Insert absolute paths of the directories to index (each in one line). E.g: C:\Folder or D:\
+C:\Users\YacineLazaar\Desktop\WellrecordArchiver\files-to-index

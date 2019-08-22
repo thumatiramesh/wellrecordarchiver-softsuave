@@ -1,0 +1,60 @@
+version: '3.5'
+
+services:
+
+# --------------------------- Coordinator + EK ------------------------ #
+  coordinator:
+    image: custom/coordinator
+    build: ./coordinator
+    networks:
+      - crawler
+    environment:
+      - 'JOBS_DIRECTORY=${DIR}/coordinator/jobs'
+    volumes:
+      - ./coordinator:/coordinator/
+      - //var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - elasticsearch
+    entrypoint: tail -f /dev/null
+    container_name: coordinator
+
+  elasticsearch:
+    image: elasticsearch:6.5.3
+    networks:
+      - crawler
+    ports:
+      - 9200:9200
+    expose:
+      - 9200
+    environment:
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - elasticsearch-snapshots:/usr/share/elasticsearch/snapshots
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    container_name: elasticsearch
+
+  kibana:
+    image: kibana:6.5.3
+    networks:
+      - crawler
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    container_name: kibana
+
+# ------------------- Container Volumes + Network ----------------- #
+volumes:
+  elasticsearch-data:
+  elasticsearch-snapshots:
+
+networks:
+  crawler:
+    external: true

@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+
+  fscrawler:
+    image: custom/fscrawler
+    build: ./fscrawler
+    networks:
+      - crawler
+    container_name: fscrawler
+    volumes:
+      - ${JOBS_DIRECTORY}:/root/.fscrawler
+      ${MOUNTED_DIRS}
+
+# ------------------- Container Volumes + Network ----------------- #
+networks:
+  crawler:
+    external: true

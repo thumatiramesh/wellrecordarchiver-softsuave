@@ -1,0 +1,9 @@
+.env
+.idea
+
+/coordinator/jobs
+/coordinator/pipeline.json
+/coordinator/paths.txt
+/coordinator/docker-compose.yml
+/elasticsearch/snapshots
+/documentation/docs

@@ -1,0 +1,31 @@
+{
+  	"name" : "${JOB_NAME}",
+  	"fs" : {
+    	"url" : "${JOB_PATH}",
+      "index_content" : true,
+      "index_folders" : false,
+      "filename_as_id" : true,
+      "continue_on_error" : true,
+      "pdf_ocr" : false,
+    	"includes" : [
+        "*/*.pdf",
+        "*/*.csv",
+        "*/*.doc",
+        "*/*.xls",
+        "*/*.xlsx",
+        "*/*.txt",
+	      "*/*.las"
+	    ],
+      "excludes": [
+        "*/*.zip"
+      ]
+  	},
+  	"elasticsearch" : {
+      "index" : "wellrecord",
+      "pipeline" : "path-pipeline",
+    	"nodes" : [
+  			{ "url" : "http://elasticsearch:9200" }
+		  ]
+  	}
+}
+

@@ -1,0 +1,23 @@
+# chown -R elasticsearch:elasticsearch ./snapshots/
+
+# Create repo first
+PUT _snapshot/wellrecord
+{
+  "type": "fs",
+  "settings": {
+    "compress" : true,
+    "location": "/usr/share/elasticsearch/snapshots/"
+  }
+}
+
+# Take a snapshot
+# PUT /_snapshot/reponame/<snapshot-{now/d}>
+PUT /_snapshot/wellrecord/%3Csnapshot-%7Bnow%2Fd%7D%3E/?wait_for_completion=true
+{
+  "indices": "wellrecord",
+}
+
+
+# Restore
+# Create a repo first!!
+# POST /_snapshot/reponame/<snapshot-{now/d}>/_restore
