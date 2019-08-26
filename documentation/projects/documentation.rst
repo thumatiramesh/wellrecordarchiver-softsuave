@@ -13,7 +13,7 @@ Install Sphinx Documentation
 
 .. code-block:: bash
 
-    git clone git@gitlab.com:geolinkis/wellrecordarchiver.git
+    git clone git@gitlab.com:geolinkis/wellrecordarchiver-softsuave.git
 
 - Follow `this steps <https://www.sphinx-doc.org/en/1.6/install.html>`_ to install Sphyinx.
 
@@ -44,7 +44,12 @@ PC
             sphinx-build -b html documentation documentation/docs
 
 
-You should see the same as https://docs.bowriverstudio.com/geolinks/index.html
+Ensure there are no errors or warnings.
+
+View Documentation locally
+--------------------------
+
+Get the absolute path of MyPathToProject/wellrecordarchiver-softsuave/documentation/docs/index.html and view it in chrome.
 
 Images
 ------

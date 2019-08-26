@@ -14,6 +14,7 @@ Indexing Directories With ElasticSearch And FSCrawler
    setup
    run
    kibana
+   duplicate/index
 
 About this project
 ------------------
@@ -37,3 +38,16 @@ This project's purpose is crawling content from various file extensions (pdf, do
    projects/tasks
    projects/documentation
    projects/notes
+
+
+. toctree::
+   :caption: OCR:
+   :hidden:
+   ocr/index
+   ocr/google-vision
+   ocr/microsoft-vision
+   ocr/rekongnition
+   ocr/textract
+   ocr/benchmarking
+
+
