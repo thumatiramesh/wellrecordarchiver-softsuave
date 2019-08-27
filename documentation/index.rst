@@ -40,14 +40,20 @@ This project's purpose is crawling content from various file extensions (pdf, do
    projects/notes
 
 
-. toctree::
+
+
+
+
+.. toctree::
    :caption: OCR:
    :hidden:
+
    ocr/index
    ocr/google-vision
    ocr/microsoft-vision
-   ocr/rekongnition
+   ocr/rekognition
    ocr/textract
    ocr/benchmarking
+
 
 

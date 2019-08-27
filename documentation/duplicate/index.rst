@@ -13,3 +13,8 @@ Using SHA-1 instead of MD5 because ...;
 
 
 Made modification to
+
+
+.. code-block:: sql
+
+    SELECT * FROM TABLE table WHERE id-=1;
