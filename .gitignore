@@ -7,3 +7,5 @@
 /coordinator/docker-compose.yml
 /elasticsearch/snapshots
 /documentation/docs
+
+private.rst
