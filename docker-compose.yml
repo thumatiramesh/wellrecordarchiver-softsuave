@@ -43,7 +43,7 @@ services:
   fscrawler:
     image: custom/fscrawler
     restart: always
-    build: ./fscrawler
+    build: ./coordinator/fscrawler
     networks:
       - web
     labels:

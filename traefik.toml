@@ -1,0 +1,39 @@
+defaultEntryPoints = ["https","http"]
+
+logLevel = "INFO"
+
+[api]
+
+[docker]
+
+[entryPoints]
+
+  [entryPoints.http]
+  address = ":80"
+
+    [entryPoints.http.redirect]
+      entryPoint = "https"
+
+  [entryPoints.https]
+  address = ":443"
+
+    [entryPoints.https.tls]
+
+  [entryPoints.traefik]
+  address = ":8008"
+
+    [entryPoints.traefik.auth]
+
+      [entryPoints.traefik.auth.basic]
+      users = [
+        "traefik:$apr1$2Rm84u3V$YCYkZgJIHhgghS88gXT5A."
+      ]
+
+[acme]
+email = "maurice.tadros@gmail.com"
+storage = "acme.json"
+entryPoint = "https"
+OnHostRule = true
+[acme.httpChallenge]
+entryPoint = "http"
+
