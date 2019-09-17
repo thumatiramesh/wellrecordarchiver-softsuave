@@ -85,7 +85,6 @@ services:
       - traefik.frontend.rule=Host:${GRAFANA_DOMAIN}
       - traefik.port=3000
       - traefik.acme.domains=${GRAFANA_DOMAIN}
-      - traefik.acme.domains=${GRAFANA_DOMAIN}
     volumes:
       - grafana-data:/var/lib/grafana
     container_name: grafana
