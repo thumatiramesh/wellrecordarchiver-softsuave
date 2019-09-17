@@ -1,0 +1,51 @@
+groups:
+- name: h3ealth
+  rules:
+
+  - alert: "Web service down"
+    expr: count(time() - container_last_seen{job="cadvisor",name="web"} > 15)
+    labels:
+      severity: "critical"
+    annotations:
+      summary: "Instance Web is down"
+      description: "The web tier has been down for more than 15 seconds."
+
+  - alert: "API service down"
+    expr: count(time() - container_last_seen{job="cadvisor",name="api"} > 15)
+    labels:
+      severity: "critical"
+    annotations:
+      summary: "Container 'api' is down"
+      description: "The api tier has been down for more than 15 seconds."
+
+  - alert: "Image processing service down"
+    expr: count(time() - container_last_seen{job="cadvisor",name="image-processor"} > 15)
+    labels:
+      severity: "critical"
+    annotations:
+      summary: "Container 'image-processor' is down"
+      description: "The image processing tier has been down for more than 15 seconds."
+
+  - alert: "Postgresql database down"
+    expr: count(time() - container_last_seen{job="cadvisor",name="postgres"} > 15)
+    labels:
+      severity: "critical"
+    annotations:
+      summary: "Container 'postgres' is down"
+      description: "The Postgresql database has been down for more than 15 seconds."
+
+  - alert: "Owncloud service down"
+    expr: count(time() - container_last_seen{job="cadvisor",name="owncloud"} > 15)
+    labels:
+      severity: "critical"
+    annotations:
+      summary: "Container 'owncloud' is down"
+      description: "The Owncloud storage service has been down for more than 15 seconds."
+
+  - alert: "Owncloud database down"
+    expr: count(time() - container_last_seen{job="cadvisor",name="owncloud-db"} > 15)
+    labels:
+      severity: "critical"
+    annotations:
+      summary: "Container 'owncloud-db' is down"
+      description: "The Owncloud database has been down for more than 15 seconds."

@@ -1,0 +1,20 @@
+route:
+  receiver: 'slack'
+  group_by: ['severity']
+  group_wait: 20s
+  group_interval: 20s
+
+receivers:
+  - name: 'slack'
+    slack_configs:
+      - username: 'alertmanager'
+        channel: '#monitoring'
+        api_url: 'https://hooks.slack.com/services/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'
+        title: '{{ template "custom_title" . }}'
+        text: '{{ template "custom_slack_message" . }}'
+        title_link: ''
+        send_resolved: true
+
+templates:
+  - /alertmanager/notifications.tmpl
+
